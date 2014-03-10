@@ -24,7 +24,7 @@ public abstract class Character implements Disposable{
 	}
 	
 	public Character(float x, float y) {
-		velocidad = 200f;
+		velocidad = 400f;
 		puntuacion = 0;
 		vidas = 3;
 		

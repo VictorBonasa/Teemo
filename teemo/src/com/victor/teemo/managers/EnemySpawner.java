@@ -39,5 +39,27 @@ public class EnemySpawner {
 		return enemigo;
 		
 	}
+	
+	public static Enemy CrearEnemigoArchivo(tipoDeEnemigo tipo,float x, float y, SpriteManager spriteManager){
+		Enemy enemigo = null;
+		
+		
+		if(tipo == Enemy.tipoDeEnemigo.FANTASMA_AZUL){
+			enemigo = new FantasmaAzul(x,y ,-120f);
+		}
+		
+		if(tipo == Enemy.tipoDeEnemigo.FANTASMA_VERDE){
+			
+			enemigo = new FantasmaVerde(x,y,-100f);
+		}
+		
+		if(tipo == Enemy.tipoDeEnemigo.SETA){
+			enemigo = new Seta(x,y,-50f);
+		}
+
+		
+		return enemigo;
+	}
+	
 
 }

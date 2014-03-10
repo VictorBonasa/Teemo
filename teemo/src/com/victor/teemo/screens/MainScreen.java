@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.victor.teemo.Teemo;
+import com.victor.teemo.managers.ResourceManager;
 import com.victor.teemo.screens.GameScreen.Nivel;
 import com.victor.teemo.util.Constantes;
 
@@ -24,6 +25,7 @@ public class MainScreen implements Screen{
 	
 	@Override
 	public void show() {
+
 		stage = new Stage();
 		
 		Table table = new Table();
@@ -90,7 +92,6 @@ public class MainScreen implements Screen{
 		btNivel3.setPosition(label.getOriginX(), label.getOriginY()-150);
 		btNivel3.setWidth(200);
 		btNivel3.setHeight(40);
-		btNivel3.setDisabled(true);
 		btNivel3.addListener(new InputListener(){
 
 			@Override
@@ -112,9 +113,34 @@ public class MainScreen implements Screen{
 		});
 		table.addActor(btNivel3);
 		
+		TextButton btNivel4 = new TextButton("Nivel 4", juego.getSkin());
+		btNivel4.setPosition(label.getOriginX(), label.getOriginY()-200);
+		btNivel4.setWidth(200);
+		btNivel4.setHeight(40);
+		btNivel4.addListener(new InputListener(){
+
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub
+				super.touchUp(event, x, y, pointer, button);
+				dispose();
+				juego.setScreen(new GameScreen(juego ,Nivel.CUATRO));
+				
+			}
+			
+		});
+		table.addActor(btNivel4);
+		
 		
 		TextButton btConfiguracion = new TextButton("Instrucciones", juego.getSkin());
-		btConfiguracion.setPosition(label.getOriginX(), label.getOriginY()-200);
+		btConfiguracion.setPosition(label.getOriginX(), label.getOriginY()-250);
 		btConfiguracion.setWidth(200);
 		btConfiguracion.setHeight(40);
 		btConfiguracion.addListener(new InputListener(){
@@ -139,7 +165,7 @@ public class MainScreen implements Screen{
 		table.addActor(btConfiguracion);
 		
 		TextButton btSalir = new TextButton("Salir", juego.getSkin());
-		btSalir.setPosition(label.getOriginX(), label.getOriginY()-250);
+		btSalir.setPosition(label.getOriginX(), label.getOriginY()-300);
 		btSalir.setWidth(200);
 		btSalir.setHeight(40);
 		btSalir.addListener(new InputListener(){

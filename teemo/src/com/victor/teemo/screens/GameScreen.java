@@ -18,22 +18,21 @@ public class GameScreen implements Screen{
 	private LevelManager levelManager;
 	
 	public enum Nivel{
-		UNO,DOS,TRES;
+		UNO,DOS,TRES,CUATRO;
 	}
 	public Nivel nivel;
 	public GameScreen(Teemo juego, Nivel nivel){
 		this.juego = juego;
 		this.nivel = nivel;
 		cargaPantalla();
+		ResourceManager.getSound("OnDuty").play();
 	}
 	
 	private void cargaPantalla(){
 		ResourceManager.cargarTodo();
 		spriteManager = new SpriteManager(juego);
 		levelManager = new LevelManager(spriteManager);
-		//TODO esto esta bien?
-		//levelManager.generateRandomLevel(dt);
-		//shapeRender = new ShapeRender();
+		levelManager.leerArchivoNivel(nivel);
 	}
 	
 
@@ -66,7 +65,6 @@ public class GameScreen implements Screen{
 		update(arg0);
 		
 		juego.batch.begin();
-			// Pinta en pantalla todos los elementos del juego
 			spriteManager.draw(juego.batch);	
 			InfPantalla();
 			juego.batch.end();
@@ -75,9 +73,11 @@ public class GameScreen implements Screen{
 	
 	private void InfPantalla(){
 		TeemoPersonaje teemoP = spriteManager.getTeemoP();
-		juego.font.draw(juego.batch, "Puntos: "+teemoP.getPuntuacion(),15,20 );
-		juego.batch.draw(ResourceManager.getTexture("vida"),15,30);
-		juego.font.draw(juego.batch, "X " + spriteManager.getTeemoP().getVidas(), 50, 40);
+		juego.font.draw(juego.batch, "Puntos: "+teemoP.getPuntuacion(),15,580 );
+		juego.batch.draw(ResourceManager.getTexture("vida"),15,530);
+		juego.font.draw(juego.batch, "X " + spriteManager.getTeemoP().getVidas(), 50, 545);
+		juego.font.draw(juego.batch, "Nivel: " + levelManager.getNivelActual(), 15, 520);
+		
 	}
 	
 	private void update(float dt){
@@ -88,15 +88,17 @@ public class GameScreen implements Screen{
 			levelManager.generateRandomLevel(dt);
 			break;
 		case DOS:
-			//levelManager.generateLevel(level, dt);
-			//levelManager.generateLevelFromFile(dt);
+			levelManager.nivelDeArchivo(dt);
+			break;
+		case TRES:
+			levelManager.nivelDeArchivo(dt);
+			break;
+		case CUATRO:
+			levelManager.nivelDeArchivo(dt);
 			break;
 		default:
 		}
-		
-		/*
-		 * Si el juego está en pausa no se refresca la lógica
-		 */
+
 		if (!juego.pausa) {
 			spriteManager.update(dt);
 			spriteManager.getTeemoP().update(dt, spriteManager);
@@ -106,7 +108,7 @@ public class GameScreen implements Screen{
 	}
 	
 	private void teclado(){
-		if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+		if (Gdx.input.isKeyPressed(Keys.P)) {
 			juego.setScreen(new InGameMenuScreen(juego, this));
 		}
 	}

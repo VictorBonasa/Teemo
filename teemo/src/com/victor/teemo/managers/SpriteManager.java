@@ -64,11 +64,12 @@ public class SpriteManager {
 				
 				if(enemigo.getClass().getSimpleName().equals("Seta")){
 					enemigo.hit();
+					teemoP.setVidas(teemoP.getVidas()+1);
 					if(enemigo.getVidas()==0){
 						teemoP.setPuntuacion(teemoP.getPuntuacion()+enemigo.getPuntosValor());
 						enemigos.removeIndex(i);
 					}
-					
+					ResourceManager.getSound("risa").play();
 					
 				}
 				
@@ -79,7 +80,7 @@ public class SpriteManager {
 						enemigos.removeIndex(i);
 					}
 					teemoP.hit();
-					ResourceManager.getSound("ataque2").play();
+					ResourceManager.getSound("ataque1").play();
 					if (teemoP.getVidas() == 0) {
 						juego.puntuacion = teemoP.getPuntuacion();
 						juego.setScreen(new GameOverScreen(juego));

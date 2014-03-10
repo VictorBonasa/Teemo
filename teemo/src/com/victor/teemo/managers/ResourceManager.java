@@ -44,6 +44,8 @@ public class ResourceManager {
 		cargarSonido("OnDuty", Gdx.audio.newSound(Gdx.files.internal("Sonidos/OnDuty.mp3")));
 		cargarSonido("ataque1", Gdx.audio.newSound(Gdx.files.internal("Sonidos/AstronautTeemo.attack1.ogg")));
 		cargarSonido("ataque2", Gdx.audio.newSound(Gdx.files.internal("Sonidos/AstronautTeemo.attack2.ogg")));
+		cargarSonido("risa", Gdx.audio.newSound(Gdx.files.internal("Sonidos/Teemo.laugh3.ogg")));
+		
 	}
 	
 	public static void cargarTextura(String nombre, Texture textura){

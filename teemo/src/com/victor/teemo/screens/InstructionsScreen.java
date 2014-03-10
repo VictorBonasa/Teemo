@@ -65,7 +65,7 @@ public class InstructionsScreen implements Screen{
 		stage = new Stage();
 		
 		Table table = new Table();
-		table.setPosition(Constantes.SCREEN_ANCHO-750f, Constantes.SCREEN_ALTO-50f);
+		table.setPosition(Constantes.SCREEN_ANCHO-775f, Constantes.SCREEN_ALTO-50f);
 		table.setFillParent(true);
 		table.setHeight(600);
 		stage.addActor(table);
@@ -75,15 +75,16 @@ public class InstructionsScreen implements Screen{
 		Label label2 = new Label("Utiliza W,A,S,D para moverte",juego.getSkin());
 		label2.setPosition(label.getOriginX(), label.getOriginY()-50);
 		table.addActor(label2);
-		Label label3= new Label("El objetivo es recoger el mayor numero de setas, los \n fantasmas tambien dan puntos, pero restan vidas",juego.getSkin());
+		Label label3= new Label("El objetivo es recoger el mayor numero de setas, ya que cada seta vale 50 puntos y actua como powerup \n dandonos otro puntos de vida. Los Fantasmas tambien dan puntos, pero restan vidas",juego.getSkin());
 		label3.setPosition(label.getOriginX(), label.getOriginY()-100);
 		table.addActor(label3);
 		
-		Label label4= new Label("Los fantasmas azules dan 10 puntos pero hacen 2 vidas de daño",juego.getSkin());
+		Label label4= new Label("Los fantasmas azules dan 10 puntos pero hacen 2 vidas de dano",juego.getSkin());
 		label4.setPosition(label.getOriginX(), label.getOriginY()-150);
 		table.addActor(label4);
 		
-		Label label5= new Label("Los fantasmas verdes dan 5 puntos y te hacen 1 vida de daño \n Cada seta vale 50 puntos",juego.getSkin());
+		Label label5= new Label("Los fantasmas verdes dan 5 puntos y te hacen 1 vida de dano. \n "
+				+ " Puedes pulsar la tecla \"p\" para pausar el juego en cualquier momento",juego.getSkin());
 		label5.setPosition(label.getOriginX(), label.getOriginY()-200);
 		table.addActor(label5);
 		
